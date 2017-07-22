@@ -61,7 +61,7 @@ class RegioJetSearcher:
         connection_key = connection_key_template.format(from_id=from_id, to_id=to_id, date=date.strftime('%Y-%m-%d'))
         cached_result = self.cache.get(connection_key)
         if cached_result:
-            result = json.loads(cached_result)
+            result = json.loads(cached_result.decode())
             return result
 
         search_url = self.SEARCH_URL.format(from_=from_id, to=to_id, date_from=date.strftime('%Y%m%d'),
