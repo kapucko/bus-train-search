@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1>Search results</h1>
+    <ul class="list-group">
+    {% for  connection in connections %}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm-2">
+          <p>{{ connection.departure}} - {{ connection.arrival}}</p>
+        </div>
+        <div class="col-sm-4">
+          <p>From: {{connection.from}}</p>
+          <p>To: {{connection.to}}</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{ connection.price }}</p>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

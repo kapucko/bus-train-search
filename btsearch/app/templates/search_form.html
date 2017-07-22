@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1>Search for bus or train</h1>
+    <p class="important">
+      Choose your destinations and date.
+    </p>
+
+  <form action="/results" method="get">
+    <div class="form-group row">
+      <label for="from-input" class="col-2 col-form-label">From</label>
+      <div class="col-10">
+        <input class="form-control" type="search" value="City" name="from" id="from">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="to-input" class="col-2 col-form-label">To</label>
+      <div class="col-10">
+        <input class="form-control" type="search" value="City"  name="to" id="to">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-date-input" class="col-2 col-form-label">Date</label>
+      <div class="col-10">
+        <input class="form-control" type="date" name="date" value="2011-08-19" id="date">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
