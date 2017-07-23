@@ -5,6 +5,7 @@ import click
 
 from btsearch.searchers import RegioJetSearcher
 from btsearch.exceptions import InvalidDateFormat
+from btsearch.config_loader import ConfigLoader
 
 # def validate_rolls(ctx, param, value):
 #     try:
@@ -32,7 +33,8 @@ def search(from_, to, date, passengers):
                                                                                            date=date,
                                                                                            passengers=passengers))
 
-    searcher = RegioJetSearcher()
+    config_loader = ConfigLoader('config.json')
+    searcher = RegioJetSearcher(config_loader.config)
     results = searcher.get_route(from_, to, date)
     click.echo(pprint(results))
     click.echo(len(results))

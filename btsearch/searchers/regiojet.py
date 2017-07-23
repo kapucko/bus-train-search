@@ -9,6 +9,7 @@ from redis import StrictRedis
 
 from ..exceptions import DestinationNotFoundException
 from ..utils import slugify, time_helper
+from ..config_loader import ConfigLoader
 
 REDIS_CONF = {
     'host': '37.139.6.125',
@@ -23,8 +24,9 @@ class RegioJetSearcher:
     SEARCH_URL = 'https://bustickets.regiojet.com/Booking/from/{from_}/to/{to}/tarif/REGULAR/departure/{date_from}/retdep/{date_to}/return/false?0'
     HACK_QUERY = '-1.IBehaviorListener.0-mainPanel-routesPanel&_={timestamp}'
 
-    def __init__(self):
-        self.cache = StrictRedis(**REDIS_CONF)
+    def __init__(self, config):
+        self.config = config
+        self.cache = StrictRedis(**self.config['redis'])
 
     def get_destination_id(self, destination_name):
         destination_name_slug = slugify(destination_name)

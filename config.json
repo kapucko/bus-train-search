@@ -1,0 +1,8 @@
+{
+  "redis": {
+    "host": "37.139.6.125",
+    "password": "wuaei44INlFurP2qMlng89HmH38",
+    "port": 6379
+  },
+  "title": "Search for your bus/train connection please!!!"
+}
